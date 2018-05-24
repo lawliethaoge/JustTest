@@ -1,9 +1,6 @@
 package top.lawliethaoge.IOtest;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
+import java.io.*;
 
 /**
  * @author hao@lawliet.com
@@ -12,7 +9,6 @@ import java.io.InputStream;
 public class FileTest {
     /**
      * 展示E盘里的所有文件夹
-     * @param []
      * @return void
      */
     public static void ShowFileName(){
@@ -27,6 +23,9 @@ public class FileTest {
     }
     public static void main(String[] args) throws Exception {
         File file = new File("E:\\haha.txt");
+
+        OutputStream outputStream = new FileOutputStream(file);
+        outputStream.write("写入成功".getBytes());
         InputStream inputStream = new FileInputStream(file);
         byte[] bytes = new byte[(int)file.length()];
         inputStream.read(bytes);
