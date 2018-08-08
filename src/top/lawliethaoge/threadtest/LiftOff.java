@@ -1,5 +1,7 @@
 package top.lawliethaoge.threadtest;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * @author hao@lawliet.com
  * @since 2018/5/24 19:59
@@ -24,7 +26,12 @@ public class LiftOff implements Runnable {
     public void run() {
         while (countDown-->0){
             System.out.print(status());
-            Thread.yield();
+//            Thread.yield();
+            try {
+                TimeUnit.MILLISECONDS.sleep((long) (Math.random()*10000));
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
 
     }
